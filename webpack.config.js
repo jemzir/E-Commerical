@@ -33,7 +33,7 @@ module.exports = {
     })
   ],
   devServer: {
-    statis: {
+    static: {
       directory: path.resolve(__dirname, './build')
     }
   }

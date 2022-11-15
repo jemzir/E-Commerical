@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true} ));
 
 app.use(express.static(path.resolve(__dirname, '.././client')))
 
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 
 // a route handler for any req that do not exist
 app.use((req, res) => res.status(400).send('This page doesn\'t exist fellow business person!'));
