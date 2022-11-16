@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently implemtned across browsers
-
+import { fetchProducts } from "./reducers/productsReducer";
 
 /**
  * 
@@ -12,14 +13,14 @@ import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently im
 function App() {
   // fetch request to backend to get data... 
   // need to shove that data into the render
-  const [products, setProducts] = useState("Nothing here yet");
-  fetch('/api')
-    .then(response => {
-      console.log(response);
-      return response.json();
-    })
-    .then(prod => setProducts([prod]));
+  const [products, setProducts] = useState(['just a single array']);
 
+  const result = fetch('/api')
+    .then(data => data.json())
+    .then(data => {
+      setProducts(JSON.stringify(data));
+      console.log('data that is from backend?',data)
+    }); 
 
   return (
     <div>

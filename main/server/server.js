@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true} ));
 
 app.use(express.static(path.resolve(__dirname, '.././client')))
 
-app.use('/build', express.static(path.resolve(__dirname, '../../build')));
+// app.use('/build', express.static(path.resolve(__dirname, '../../build')));
 // app.get('/', (req, res) => {
 //   return res.status(200).sendFile('.././client/index.html');
 // })

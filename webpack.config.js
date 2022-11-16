@@ -30,11 +30,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Development',
       template: './main/client/index.html'
-    })
+    }),
   ],
   devServer: {
     static: {
-      directory: path.resolve(__dirname, './build')
+      directory: path.resolve(__dirname, './main/client')
+    },
+    proxy: {
+      '/api': 'http://localhost:3000/'
     }
   }
 }

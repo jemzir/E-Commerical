@@ -1,3 +1,5 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
 const initialState = {
 
 };
@@ -7,5 +9,7 @@ const productsReducer = (state = initialState, action) => {
 
 
 };
+
+
 
 export default productsReducer;
