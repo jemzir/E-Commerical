@@ -10,7 +10,13 @@ app.use(express.urlencoded({ extended: true} ));
 
 app.use(express.static(path.resolve(__dirname, '.././client')))
 
-// app.use('/api', apiRouter);
+app.use('/api', router);
+
+app.get('/', async (req, res) => {
+  res.status(200);
+  await res.send(fs.readFile('../.././client/index.html'));
+})
+
 
 // a route handler for any req that do not exist
 app.use((req, res) => res.status(400).send('This page doesn\'t exist fellow business person!'));
