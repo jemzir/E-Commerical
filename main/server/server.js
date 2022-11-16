@@ -10,16 +10,15 @@ app.use(express.urlencoded({ extended: true} ));
 
 app.use(express.static(path.resolve(__dirname, '.././client')))
 
+app.use('/build', express.static(path.resolve(__dirname, '../../build')));
+// app.get('/', (req, res) => {
+//   return res.status(200).sendFile('.././client/index.html');
+// })
+
 app.use('/api', router);
 
-app.get('/', async (req, res) => {
-  res.status(200);
-  await res.send(fs.readFile('../.././client/index.html'));
-})
-
-
 // a route handler for any req that do not exist
-app.use((req, res) => res.status(400).send('This page doesn\'t exist fellow business person!'));
+app.use((req, res) => res.status(400).write('This page doesn\'t exist fellow business person!'));
 
 //Error catch all, we know this because 4 parameters...
 app.use((err, req, res, next) => {

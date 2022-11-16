@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently implemtned across browsers
 
 
+/**
+ * 
+ * note: the localhost:3000 is not responding to the jsx... need to debug that
+ */
+
 // can bring in results from server to here
 
 function App() {
@@ -9,7 +14,10 @@ function App() {
   // need to shove that data into the render
   const [products, setProducts] = useState("Nothing here yet");
   fetch('/api')
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
     .then(prod => setProducts([prod]));
 
 
