@@ -10,7 +10,7 @@ const router = express.Router();
 // functionality needs to add product data...
 
 // functionality needs to get product data...
-router.get('/', commerceController); 
+router.get('/', commerceController.getProducts); 
 
 // functionality needs to update product data...
 
@@ -19,3 +19,4 @@ router.get('/', commerceController);
 
 
 
+module.exports = router;
