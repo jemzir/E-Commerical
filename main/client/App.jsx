@@ -4,6 +4,7 @@ import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently im
 import { fetchProducts } from "./reducers/productsReducer";
 import AddProductBtn from "./components/addProduct.jsx";
 import DeleteProd from "./components/deleteProduct.jsx";
+import UpdateProduct from "./components/updateProduct.jsx";
 
 /**
  * 
@@ -29,6 +30,7 @@ function App() {
   return (
     <div>
       <h1>The Commercial Beginning</h1>
+      <UpdateProduct />
       <DeleteProd />
       <AddProductBtn />
       <div>{products}</div>
