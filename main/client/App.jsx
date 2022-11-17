@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently implemtned across browsers
 import { fetchProducts } from "./reducers/productsReducer";
 import AddProductBtn from "./components/addProduct.jsx";
+import DeleteProd from "./components/deleteProduct.jsx";
 
 /**
  * 
@@ -28,6 +29,7 @@ function App() {
   return (
     <div>
       <h1>The Commercial Beginning</h1>
+      <DeleteProd />
       <AddProductBtn />
       <div>{products}</div>
     </div>

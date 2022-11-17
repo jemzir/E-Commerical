@@ -21,7 +21,9 @@ router.get('/', commerceController.getProducts, (req, res) => {
 // functionality needs to update product data...
 
 // functionality needs to delete product data...
-
+router.delete('/', commerceController.deleteProduct, (req, res) => {
+  res.status(200).json('delete successful');
+})
 
 
 

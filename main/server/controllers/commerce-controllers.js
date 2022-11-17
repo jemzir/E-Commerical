@@ -26,7 +26,7 @@ commerceController.addProducts = async (req, res, next) => {
   try {
     const { body } = req;
 
-    console.log('body:', body);
+    // console.log('body:', body);
 
     res.locals.product = body;
 
@@ -36,24 +36,39 @@ commerceController.addProducts = async (req, res, next) => {
 
     const addProduct = "INSERT INTO products (product_name, product_price, product_details) ";
     const SqlQueryInsert = addProduct.concat(`VALUES ('${product_name}', ${product_price}, '${product_details}');`);
-    await db.query(SqlQueryInsert)
+    await db.query(SqlQueryInsert);
 
     return next();
 
   } catch (error) {
     return next({
       log: 'error occured at add Products',
-      message: {err: err}
+      message: {err: error}
     })
   }
 }
 
-commerceController.updateProducts = (req, res, next) => {
+commerceController.updateProducts = async (req, res, next) => {
   // update functionality
 }
 
-commerceController.deleteProduct = (req, res, next) => {
+commerceController.deleteProduct = async (req, res, next) => {
   // delete functionality
+  try {
+    const { body } = req;
+    const { product_name, product_price, product_id } = body;
+    console.log('body', body);
+
+    const deleteProdSql = `DELETE FROM products WHERE product_name = '${product_name}' OR product_price=${product_price} OR product_id = ${product_id}`;
+    await db.query(deleteProdSql);
+    return next();
+
+  } catch (error) {
+    return next({
+      log: 'error occured at add Products',
+      message: {err: error}
+    })
+  }
 }
 
 
