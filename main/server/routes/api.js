@@ -9,10 +9,9 @@ const fs = require('fs');
  */
 
 // functionality needs to add product data...
-router.put('/', commerceController.addProducts), (req, res) => {
-  res.status(200);
-  res.send('Successfully added product!');
-};
+router.post('/', commerceController.addProducts, (req, res) => {
+  res.status(200).json(res.locals.product);
+});
 // functionality needs to get product data...
 router.get('/', commerceController.getProducts, (req, res) => {
   res.status(200);

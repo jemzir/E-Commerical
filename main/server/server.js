@@ -18,7 +18,7 @@ app.use(express.static(path.resolve(__dirname, '.././client')))
 app.use('/api', router);
 
 // a route handler for any req that do not exist
-app.use((req, res) => res.status(400).write('This page doesn\'t exist fellow business person!'));
+app.use((req, res) => res.status(400).json('This page doesn\'t exist fellow business person!'));
 
 //Error catch all, we know this because 4 parameters...
 app.use((err, req, res, next) => {

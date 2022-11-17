@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently implemtned across browsers
 import { fetchProducts } from "./reducers/productsReducer";
+import AddProductBtn from "./components/addProduct.jsx";
 
 /**
  * 
@@ -19,12 +20,15 @@ function App() {
     .then(data => data.json())
     .then(data => {
       setProducts(JSON.stringify(data));
-      console.log('data that is from backend?',data)
+      // console.log('data that is from backend?',data)
     }); 
+
+    // need to set up a module for button to add a product/send a req
 
   return (
     <div>
       <h1>The Commercial Beginning</h1>
+      <AddProductBtn />
       <div>{products}</div>
     </div>
   )
