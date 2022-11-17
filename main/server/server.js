@@ -1,5 +1,5 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const app = express();
 const router = require('./routes/api.js');
 
@@ -8,12 +8,17 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true} ));
 
+
 app.use(express.static(path.resolve(__dirname, '.././client')))
 
 // app.use('/build', express.static(path.resolve(__dirname, '../../build')));
 // app.get('/', (req, res) => {
 //   return res.status(200).sendFile('.././client/index.html');
 // })
+app.use('/signup.html', (res, req) => {
+  console.log('did we get here?');
+  res.sendFile(path.resolve(__dirname, '.././client/signup.html'));
+});
 
 app.use('/api', router);
 

@@ -30,7 +30,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Development',
       template: './main/client/index.html'
-    }),
+    })
   ],
   devServer: {
     static: {
