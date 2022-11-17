@@ -1,6 +1,6 @@
 import React from "react";
 
-function UpdateProduct() {
+function UpdateProduct(props) {
   const clickHandler = async () => {
     console.log('update btn clicked');
     const inputTagArr = document.querySelectorAll('.upd');
@@ -22,6 +22,7 @@ function UpdateProduct() {
     inputTagArr.forEach((tag) => {
       tag.value = ''
     });
+    props.refresh();
   }
 
   return (

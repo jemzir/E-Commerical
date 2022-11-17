@@ -1,6 +1,6 @@
 import React from "react";
 
-function DeleteProd() {
+function DeleteProd(props) {
   const clickHandler = async () => {
     console.log('We clicked the delete btn');
     const inputTagArr = document.querySelectorAll('.del');
@@ -19,6 +19,7 @@ function DeleteProd() {
     inputTagArr.forEach((tag) => {
       tag.value = ''
     });
+    props.refresh();
   }
 
   return (

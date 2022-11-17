@@ -1,5 +1,5 @@
 import React from "react";
-function AddProductBtn() {
+function AddProductBtn(props) {
   /**
    *  set up a fetch request that will access '/api'
    *  it should be a POST req
@@ -30,6 +30,7 @@ function AddProductBtn() {
     inputTagArr.forEach((tag) => {
       tag.value = ''
     });
+    props.refresh();
   }
 
   return (

@@ -18,21 +18,24 @@ function App() {
   // need to shove that data into the render
   const [products, setProducts] = useState(['just a single array']);
 
-  const result = fetch('/api')
+  const refreshReact = () => {
+    fetch('/api')
     .then(data => data.json())
     .then(data => {
       setProducts(JSON.stringify(data));
       // console.log('data that is from backend?',data)
     }); 
+  }
 
+  refreshReact();
     // need to set up a module for button to add a product/send a req
 
   return (
     <div>
       <h1>The Commercial Beginning</h1>
-      <UpdateProduct />
-      <DeleteProd />
-      <AddProductBtn />
+      <UpdateProduct refresh={refreshReact}/>
+      <DeleteProd refresh={refreshReact}/>
+      <AddProductBtn refresh={refreshReact}/>
       <div>{products}</div>
     </div>
   )
