@@ -1,0 +1,47 @@
+{
+  "name": "solo-project",
+  "jest": {
+    "verbose": true
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production nodemon ./main/server/server.js",
+    "build": "webpack --mode production",
+    "dev": "concurrently \"NODE_env=development nodemon ./main/server/server.js\" \"NODE_ENV=development webpack serve --open\"",
+    "test": "jest --verbose"
+  },
+  "author": "James Nghiem",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.0",
+    "bcryptjs": "^2.4.3",
+    "browserify": "^17.0.0",
+    "express": "^4.18.2",
+    "isomorphic-fetch": "^3.0.0",
+    "mongoose": "^6.7.2",
+    "node-fetch": "^3.3.0",
+    "pg": "^8.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
+    "supertest": "^6.3.1",
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^7.5.0",
+    "css-loader": "^6.7.2",
+    "eslint": "^8.27.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

@@ -5,6 +5,7 @@ import { fetchProducts } from "./reducers/productsReducer";
 import AddProductBtn from "./components/addProduct.jsx";
 import DeleteProd from "./components/deleteProduct.jsx";
 import UpdateProduct from "./components/updateProduct.jsx";
+import ProductDisplay from "./components/ProductDisplay.jsx";
 
 /**
  * 
@@ -37,6 +38,9 @@ function App() {
       <DeleteProd refresh={refreshReact}/>
       <AddProductBtn refresh={refreshReact}/>
       <div>{products}</div>
+      <div>
+        <ProductDisplay products={products}/>
+      </div>
     </div>
   )
 }
