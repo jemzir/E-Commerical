@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GeneralContext } from "../Contexts/GeneralContext.js";
 
-function DeleteProd(props) {
+
+function DeleteProd() {
+  const { refreshReact } = useContext(GeneralContext);
+
   const clickHandler = async () => {
     console.log('We clicked the delete btn');
     const inputTagArr = document.querySelectorAll('.del');
@@ -19,7 +23,7 @@ function DeleteProd(props) {
     inputTagArr.forEach((tag) => {
       tag.value = ''
     });
-    props.refresh();
+    refreshReact();
   }
 
   return (

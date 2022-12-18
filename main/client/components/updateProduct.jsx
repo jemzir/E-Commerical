@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GeneralContext } from "../Contexts/GeneralContext.js";
 
-function UpdateProduct(props) {
+
+function UpdateProduct() {
+  const { refreshReact } = useContext(GeneralContext);
+
   const clickHandler = async () => {
     console.log('update btn clicked');
     const inputTagArr = document.querySelectorAll('.upd');
@@ -22,7 +26,7 @@ function UpdateProduct(props) {
     inputTagArr.forEach((tag) => {
       tag.value = ''
     });
-    props.refresh();
+    refreshReact();
   }
 
   return (

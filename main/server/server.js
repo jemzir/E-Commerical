@@ -8,12 +8,15 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true} ));
 
-app.use(express.static(path.resolve(__dirname, '.././client')))
+app.use(express.static('/main/client'));
 
+// app.use(express.static(path.resolve(__dirname, '.././client')))
+app.use(express.static('/Users/james/repos/solo-project-Ecommerce/build'));
 // app.use('/build', express.static(path.resolve(__dirname, '../../build')));
 // app.get('/', (req, res) => {
 //   return res.status(200).sendFile('.././client/index.html');
 // })
+
 
 app.use('/api', router);
 

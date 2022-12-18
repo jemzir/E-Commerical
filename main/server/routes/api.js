@@ -8,6 +8,8 @@ const fs = require('fs');
  * 
  */
 
+
+
 // functionality needs to add product data...
 router.post('/', commerceController.addProducts, (req, res) => {
   res.status(200).json(res.locals.product);
