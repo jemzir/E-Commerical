@@ -1,5 +1,7 @@
-import React from "react";
-function AddProductBtn(props) {
+import React, { useContext } from "react";
+import { GeneralContext } from "../Contexts/GeneralContext.js";
+
+function AddProductBtn() {
   /**
    *  set up a fetch request that will access '/api'
    *  it should be a POST req
@@ -30,7 +32,7 @@ function AddProductBtn(props) {
     inputTagArr.forEach((tag) => {
       tag.value = ''
     });
-    props.refresh();
+    refreshReact();
   }
 
   return (

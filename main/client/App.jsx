@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, createContext } from "react";
 import fetch from 'isomorphic-fetch'; // isomorphic so it can be consistently implemtned across browsers
-import { fetchProducts } from "./reducers/productsReducer";
 import AddProductBtn from "./components/addProduct.jsx";
 import DeleteProd from "./components/deleteProduct.jsx";
 import UpdateProduct from "./components/updateProduct.jsx";
 import ProductDisplay from "./components/ProductDisplay.jsx";
+import { GeneralContext } from "./Contexts/GeneralContext.js";
 
 /**
  * 
@@ -17,31 +16,32 @@ import ProductDisplay from "./components/ProductDisplay.jsx";
 function App() {
   // fetch request to backend to get data... 
   // need to shove that data into the render
-  const [products, setProducts] = useState(['just a single array']);
+
+  const [products, setProducts] = useState([]);
 
   const refreshReact = () => {
     fetch('/api')
     .then(data => data.json())
     .then(data => {
-      setProducts(JSON.stringify(data));
-      // console.log('data that is from backend?',data)
+      setProducts(data);
     }); 
   }
 
-  refreshReact();
+  // on laoding the page , the components will render only once
+  useEffect(() => {
+    refreshReact();
+  }, [])
     // need to set up a module for button to add a product/send a req
 
   return (
-    <div>
-      <h1>The Commercial Beginning</h1>
-      <UpdateProduct refresh={refreshReact}/>
-      <DeleteProd refresh={refreshReact}/>
-      <AddProductBtn refresh={refreshReact}/>
-      <div>{products}</div>
-      <div>
-        <ProductDisplay products={products}/>
-      </div>
-    </div>
+    <>
+      <GeneralContext.Provider value={ { products, setProducts, refreshReact } } >
+        <UpdateProduct />
+        <DeleteProd />
+        <AddProductBtn />
+        <ProductDisplay />
+      </GeneralContext.Provider>
+    </>
   )
 }
 

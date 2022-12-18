@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ProductCard from "./ProductCard.jsx";
+import { GeneralContext } from "../Contexts/GeneralContext.js";
 
-function ProductDisplay(props) {
+function ProductDisplay() {
+  const { products, refreshReact } = useContext(GeneralContext);
+  // useEffect(() => {
+  //   refreshReact();
+  // }, [products])
   // get info via props from ProductDisplay
-  const productArr = props.products;
-  
-  const resultArr = [];
-  for (let i = 0; i < productArr.length; i++) {
-    let id = productArr[i].product_id;
-    
-    resultArr.push(<ProductCard />)
+  const productArray = [];
+  for (let i = 0; i < products.length; i++) {
+    productArray.push(<ProductCard key={i} productInfo={products[i]}/>)
   }
 
   return (
     <div>
-      {}
+      From ProductDisplay show products: 
+      <div className="productDisplay">{productArray}</div>
     </div>
   )
 }
